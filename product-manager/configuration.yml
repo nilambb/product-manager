@@ -1,0 +1,58 @@
+server:
+  maxThreads: 512
+  applicationContextPath: /product-manager
+  adminContextPath: /admin
+  applicationConnectors:
+    - type: http
+      port: 9090
+  adminConnectors:
+    - type: http
+      port: 9091
+
+logging:
+  level: INFO
+  loggers:
+    com.demo: INFO
+    
+
+swagger:
+  resourcePackage: com.lti
+  title: Sample API
+  version: v1
+  description: Sample service API
+  contact: Justin Plock
+  contactEmail: jplock@smoketurner.com
+  contactUrl: https://smoketurner.com
+  license: Apache 2.0
+  licenseUrl: https://www.apache.org/licenses/LICENSE-2.0
+  
+ 
+productDb:
+  driverClass: org.h2.Driver
+  url: jdbc:h2:mem:myDb;DB_CLOSE_DELAY=-1
+  user: sa
+  password: 
+  maxWaitForConnection: 1s
+  validationQuery: "SELECT 1"
+  validationQueryTimeout: 3s
+  minSize: 8
+  maxSize: 32
+  checkConnectionWhileIdle: false
+  evictionInterval: 10s
+  minIdleTime: 1 minute
+  checkConnectionOnBorrow: true
+
+orderDb: 
+  driverClass: org.postgresql.Driver
+  url: jdbc:postgresql://localhost:5433/postgres?currentSchema=orderSchema
+  user: postgres
+  password: postgres
+  maxWaitForConnection: 1s
+  validationQuery: "SELECT 1"
+  validationQueryTimeout: 3s
+  minSize: 8
+  maxSize: 32
+  checkConnectionWhileIdle: false
+  evictionInterval: 10s
+  minIdleTime: 1 minute
+  checkConnectionOnBorrow: true
